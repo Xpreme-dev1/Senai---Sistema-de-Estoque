@@ -1,0 +1,16 @@
+dao\CadastroProdutosDAO.class
+controller\LoginServlet.class
+model\ProdutoModel.class
+connection\ConnectionFactory.class
+controller\CadastroController.class
+util\senhaUtil.class
+dao\CadastroUsersDAO.class
+model\CadastroUsuarioModel.class
+controller\EstoqueController.class
+com\ds\senai\JakartaRestConfiguration.class
+com\ds\senai\resources\JakartaEE11Resource.class
+controller\CadastroProdutosController.class
+model\UserModel.class
+controller\ResumoEstoqueController.class
+dao\UserDAO.class
+model\CadastroProdutoModel.class

@@ -4,25 +4,44 @@ import connection.ConnectionFactory;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import model.UserModel;
+import util.SenhaUtil;
 
 public class UserDAO {
     
-    public boolean validarLogin(UserModel userModel){
-        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-        
-        try (var con = ConnectionFactory.getConnection()) {
+    public UserModel validarLogin(UserModel userModel) {
+    String sql = "SELECT * FROM users WHERE username = ?";
 
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, userModel.getUsername());
-            stmt.setString(2, userModel.getPassword());
+    try (var con = ConnectionFactory.getConnection()) {
 
-            ResultSet rs = stmt.executeQuery();
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, userModel.getUsername());
+
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            String hashBanco = rs.getString("psw");
+
+            boolean senhaValida = SenhaUtil.verificarSenha(
+                userModel.getPassword(),
+                hashBanco
+            );
+
+            if (senhaValida) {
+                UserModel user = new UserModel();
+                user.setUsername(rs.getString("username"));
+                user.setPassword(hashBanco);
+                user.setFuncao(rs.getString("funcao"));
+
+                return user;
+            }
             
-            return rs.next();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+         return null;
+         
         }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+        }
+        return null;
     }
 }

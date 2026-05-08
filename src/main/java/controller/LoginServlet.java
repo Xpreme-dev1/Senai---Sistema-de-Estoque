@@ -16,10 +16,10 @@ public class LoginServlet extends HttpServlet{
     protected void doPost(
             HttpServletRequest request,
             HttpServletResponse response)
-            throws ServletException, IOException{
-    
-        String usuario = request.getParameter("inputUser");
-        String senha = request.getParameter("inputPassword");
+            throws ServletException, IOException {
+        
+        String usuario = request.getParameter("users");
+        String senha = request.getParameter("passw");
         
         UserModel userModel = new UserModel();
         userModel.setUsername(usuario);
@@ -27,17 +27,19 @@ public class LoginServlet extends HttpServlet{
         
         UserDAO dao = new UserDAO();
         
-        if(dao.validarLogin(userModel)){
+        UserModel user = dao.validarLogin(userModel);
+        
+        if(user != null) {
             HttpSession session =
                     request.getSession();
             
-            session.setAttribute("usuario", usuario);
+            session.setAttribute("usuario", user.getUsername());
+            session.setAttribute("perfil", user.getFuncao());
             
-            response.sendRedirect("pages/dashboard.html");
+            response.sendRedirect(request.getContextPath() + "/pages/dashboard.html");
         }else{
-            response.sendRedirect("index.html");
+            response.sendRedirect(request.getContextPath() + "/index.html");
         }
-        
     }
     
 }

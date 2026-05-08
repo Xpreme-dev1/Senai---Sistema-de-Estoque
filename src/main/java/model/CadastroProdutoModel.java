@@ -2,7 +2,6 @@ package model;
 
 public class CadastroProdutoModel {
     
-    private int id;
     private String codigoBarras;
     private String nomeProduto;
     private String fabricante;
@@ -12,14 +11,7 @@ public class CadastroProdutoModel {
     private long quantidade;
     private String valor;
     private String total;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private String status;
 
     public String getCodigoBarras() {
         return codigoBarras;
@@ -91,6 +83,14 @@ public class CadastroProdutoModel {
 
     public void setTotal(String total) {
         this.total = total;
+    }
+    
+    public String getStatus(){
+        return status;
+    }
+    
+    public void setStatus(String status){
+        this.status = status;
     }
     
 }
