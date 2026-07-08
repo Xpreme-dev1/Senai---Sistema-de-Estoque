@@ -1,13 +1,13 @@
 package util;
 
-/**
- *
- * @author 232.001461
- */
-public class SenhaUtil {
+import org.mindrot.jbcrypt.BCrypt;
 
-    public static boolean verificarSenha(String password, String hashBanco) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+public class SenhaUtil {
+    public static String gerarHash (String senha){
+    return BCrypt.hashpw(senha, BCrypt.gensalt());
     }
-    
+    public static boolean verificarSenha(String senhaDigitada, String hash){
+        return BCrypt.checkpw(senhaDigitada, hash);
+    }
+
 }

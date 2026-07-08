@@ -10,13 +10,11 @@
     </head>
     <body>
         <header id="header">
-            <h1 id="tituloDashboard">Sistema de estoque</h1>
-            <nav>
-                <ul>
-                    <li><a href="dashboard.html" >Inicio</a></li>
-                    <li><a href="#" >Gerenciamento</a></li>
-                    <li><a href="cadastro.html" class="btn-menu" >Cadastro</a></li>
-                    <li><a href="#" id="btnLogout">Sair</a></li>
+            <h1 id="tituloDashboard">Sistema de Estoque</h1>
+            <nav id="menu">
+                <ul class="menu-lista">
+                    <li><a href="gerenciamento.html">Gerenciamento</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
                 </ul>
             </nav>
         </header>
@@ -56,7 +54,7 @@
                     <button id="btnPesquisar" class="btn-pesquisa">Pesquisar</button>
                 </div>
                 <div class="topo-tabela">
-                    <a href="../pages/cadastroProdutos.html" class="btn-add">+</a>
+                    <a href="cadastroProdutos.html" class="btn-add">+</a>
                 </div>
             </section>
             <section id="tabelaEstoqueContainer">
@@ -114,8 +112,8 @@
             </section>
         </main>
         <script src="../js/dashboard.js"></script>
-        <script src="../js/filto.js"></script>
+        <script src="../js/filtro.js"></script>
         <script src="../js/validarLogin.js"></script>
-        <script src="../js/logout.js"></script>
+        <script src="../js/logout.js.js"></script>
     </body>
 </html>

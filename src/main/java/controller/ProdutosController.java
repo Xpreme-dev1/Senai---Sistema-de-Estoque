@@ -10,18 +10,19 @@ import java.io.IOException;
 import java.util.List;
 import model.CadastroProdutoModel;
 
-@WebServlet("/api/estoque")
-public class EstoqueController extends HttpServlet {
+/**
+ * Controller para fornecer a lista de produtos para a tela de Gerenciamento.
+ * Alteração: Criado para atender a chamada fetch('/api/produtos') do gerenciamento.js.
+ */
+@WebServlet("/api/produtos")
+public class ProdutosController extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-           throws IOException{
-        
-        String nome = request.getParameter("nome");
-        String tipo = request.getParameter("tipo");
-        String data = request.getParameter("data");
+           throws IOException {
         
         CadastroProdutosDAO dao = new CadastroProdutosDAO();
-        List<CadastroProdutoModel> lista = dao.listarComFiltro(nome, tipo, data);
+        // Busca todos os produtos sem filtro
+        List<CadastroProdutoModel> lista = dao.listarComFiltro(null, null, null);
         
         String json = new Gson().toJson(lista);
         

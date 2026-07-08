@@ -5,7 +5,7 @@ async function validarLogin(){
 
         console.log("PERFIL FRONT: ", dado.perfil);
 
-        if (!dado.perfil || dado.perfil.toLowserCase() !== "admin") {
+        if (!dado.perfil || dado.perfil.toLowserCase() !== "ADMIN") {
             document.getElementsByClassName(".btn-menu").style.display = "nome";        
         }
     } catch (e) {

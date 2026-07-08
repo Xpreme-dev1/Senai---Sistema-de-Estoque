@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
-<html>
+<html lang="pt-br">
     <head>
         <link rel="stylesheet" href="../css/reset.css"/>
         <link rel="stylesheet" href="../css/color.css"/>
@@ -17,62 +13,87 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <h1 id="tituloDashboard">Sistema de estoque</h1>
             <nav>
                 <ul>
-                    <li><a href="dashboard.html" >Inicio</a></li>
-                    <li><a href="#" >Gerenciamento</a></li>
-                    <li><a href="cadastro.html">Cadastro</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="gerenciamento.html">Gerenciamento</a></li>
+                    <li><a href="cadastro.html">Usuários</a></li>
                 </ul>
             </nav>
         </header>
         <main>
             <section id="form-container">
+                <h2>Novo Produto</h2>
                 <form action="../cadastroProdutos" method="POST" id="formCadastro">
                     <div class="linha-form">
-                        <label>Código de Barras</label>
-                        <input type="text" name="codigoBarras" required />
+                        <div class="grupo-form">
+                            <label>Código de Barras</label>
+                            <input type="text" name="codigoBarras" required />
+                        </div>
+                        <div class="grupo-form">
+                            <label>Nome do produto</label>
+                            <input type="text" name="nomeProduto" required />
+                        </div>
                     </div>
-                    <div class="grupo-form">
-                        <label>Nome do produto</label>
-                        <input type="text" name="nomeProduto" required />
-                    </div>
+                    
                     <div class="linha-form">
-                        <label>Fabricante</label>
-                        <input type="text" name="fabricante" required />
+                        <div class="grupo-form">
+                            <label>Fabricante</label>
+                            <input type="text" name="fabricante" required />
+                        </div>
+                        <div class="grupo-form">
+                            <label>Marca</label>
+                            <input type="text" name="marca" required />
+                        </div>
                     </div>
-                    <div class="grupo-form">
-                        <label>Marca</label>
-                        <input type="text" name="marca" required />
-                    </div>
+
                     <div class="linha-form">
-                        <label>Data de Fabricação</label>
-                        <input type="date" name="dataFabricacao" required />
+                        <div class="grupo-form">
+                            <label>Data de Fabricação</label>
+                            <input type="date" name="dataFabricacao" required />
+                        </div>
+                        <div class="grupo-form">
+                            <label>Data de Vencimento</label>
+                            <input type="date" name="dataVencimento" required />
+                        </div>
                     </div>
-                    <div class="grupo-form">
-                        <label>Data de Vencimento</label>
-                        <input type="date" name="dataVencimento" required />
-                    </div>
+
                     <div class="linha-form">
                          <div class="grupo-form">
                             <label>Quantidade</label>
-                            <input type="number" name="quantidade" id="calcular" required />
+                            <input type="number" name="quantidade" id="quantidade" required />
                          </div>
                          <div class="grupo-form">
                             <label>Valor Unitário</label>
-                            <input type="number" name="valor" id="calcular" required />
+                            <input type="number" step="0.01" name="valor" id="valor" required />
                          </div>
                     </div>
+
                     <div class="linha-form">
                         <div class="grupo-form">
                             <label>Valor Total</label>
-                            <input type="number" name="total" required />
+                            <input type="number" step="0.01" name="total" id="total" required />
+                        </div>
+                        <div class="grupo-form">
+                            <label>Estoque Mínimo</label>
+                            <input type="number" name="estoqueMinimo" value="0" required />
                         </div>
                     </div>
+
+                    <div class="linha-form">
+                        <div class="grupo-form">
+                            <label>Local/Prateleira</label>
+                            <input type="text" name="localArmazenamento" placeholder="Ex: Prateleira A1" />
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="status" value="Disponível">
+                    
                     <div class="acoes-form">
-                        <button type="submit" class="btn-salvar">Salvar</button>
                         <a href="dashboard.html" class="btn-cancelar">Cancelar</a>
+                        <button type="submit" class="btn-salvar">Salvar Produto</button>
                     </div>
                 </form>
             </section>
         </main>
-        <script scr="../js/cadastroProdutos.js"></script>
+        <script src="../js/cadastroProdutos.js"></script>
     </body>
 </html>

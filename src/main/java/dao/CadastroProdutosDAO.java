@@ -3,6 +3,7 @@ package dao;
 
 import connection.ConnectionFactory;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,8 +18,9 @@ public class CadastroProdutosDAO {
                 "(codigo_barras, nome_produto, fabricante, marca, data_fabricacao, data_vencimento, quantidade, valor, total, status) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = ConnectionFactory.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = ConnectionFactory.getConnection();) {
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, produto.getCodigoBarras());
             stmt.setString(2, produto.getNomeProduto());
@@ -44,38 +46,35 @@ public class CadastroProdutosDAO {
     public List<CadastroProdutoModel> listarComFiltro(String nome, String tipo, String data){
         List<CadastroProdutoModel> lista = new ArrayList<>();
         
-        StringBuilder sql = new StringBuilder("SELECT * FROM produtos WHERE 1 = 1");
+        StringBuilder sql = new StringBuilder("SELECT * FROM produtos");
         
         if(nome != null && !nome.isEmpty()){
             sql.append(" AND LOWER(nome_produto) LIKE ?");
         }
-        
         if(tipo != null && !tipo.isEmpty()){
             sql.append(" AND status = ?");
         }
         
         if(data != null && !data.isEmpty()){
-            sql.append(" AND data_fabricacao = ?");
+            sql.append(" AND data_fabricação = ?");
         }
-
+        
         try(Connection conn = ConnectionFactory.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql.toString())){
+            PreparedStatement stmt = conn.prepareCall(sql.toString())){
             
             int index = 1;
             
             if(nome != null && !nome.isEmpty()){
                 stmt.setString(index++, "%" + nome.toLowerCase() + "%");
             }
-            
             if(tipo != null && !tipo.isEmpty()){
-                stmt.setString(index++, tipo);
+                stmt.setString(index++, "%" + tipo.toLowerCase() + "%");
             }
-            
             if(data != null && !data.isEmpty()){
                 stmt.setString(index++, data);
             }
             
-            ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery(); 
             
             while(rs.next()){
                 CadastroProdutoModel p = new CadastroProdutoModel();
@@ -90,8 +89,6 @@ public class CadastroProdutosDAO {
                 p.setValor(rs.getString("valor"));
                 p.setTotal(rs.getString("total"));
                 p.setStatus(rs.getString("status"));
-                
-                lista.add(p);
             }
         } catch (Exception e) {
             e.printStackTrace();

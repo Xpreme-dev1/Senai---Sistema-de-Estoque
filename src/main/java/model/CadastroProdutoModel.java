@@ -2,6 +2,7 @@ package model;
 
 public class CadastroProdutoModel {
     
+    private int id;
     private String codigoBarras;
     private String nomeProduto;
     private String fabricante;

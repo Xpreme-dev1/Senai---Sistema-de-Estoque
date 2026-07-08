@@ -8,7 +8,7 @@ async function filtroEstoque(){
     const daos = await response.json();
 
 
-const url = `http://localhost:8080/api/estoque?nome=${encodeURIComponent(nome)}
+    const url = `http://localhost:8080/api/estoque?nome=${encodeURIComponent(nome)}
                 &tipo=${encodeURIComponent(tipo)}&data=${encodeURIComponent(data)}`;
 
     const tabela = document.getElementById("corpoTabela");

@@ -31,6 +31,22 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE produtos(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    codigo_barras VARCHAR(100) NOT NULL,
+    nome_produto VARCHAR(100) NOT NULL,
+    fabricante VARCHAR(100) NOT NULL,
+    marca VARCHAR(100) NOT NULL,
+    data_fabricacao DATE,
+    data_vencimento DATE,
+    quantidade BIGINT,
+    valor DECIMAL(10,2),
+    total DECIMAL(10,2),
+    status VARCHAR(250),
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 INSERT INTO users (
     username, psw, nameFirst, sobrenome, matricula, cpf,
     sexo, dtaNascimento, email, telefone, funcao,
@@ -39,18 +55,4 @@ INSERT INTO users (
     'admin', '1234', 'Admin', 'Sistema', '0001', '000.000.000-00',
     'Masculino', '1990-01-01', 'admin@email.com', '71999999999', 'Administrador',
     '40000-000', 'Rua Exemplo', '123', 'Centro', 'Salvador', 'BA', 'N/A'
-);
-
-CREATE TABLE produtos(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    codigo_barras VARCHAR(100) NOT NULL,
-    nome_produto VARCHAR(100) NOT NULL,
-    fabricante VARCHR(100) NOT NULL,
-    marca VARCHAR(100) NOT NULL,
-    data_fabricante DATE,
-    data_vencimento DATE,
-    quantidade BIGINT,
-    valor DECIMAL(10,2),
-    total DECIMAL(10,2),
-    status varchar(250)
 );
