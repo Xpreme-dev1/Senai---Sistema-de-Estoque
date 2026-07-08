@@ -10,16 +10,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Controller para gerenciar movimentações de estoque.
- * Alteração: Criado para evitar erros de 404 no gerenciamento.js.
- */
 @WebServlet("/api/movimentacoes")
 public class MovimentacaoController extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
            throws IOException {
-        // Retorna uma lista vazia por enquanto (pode ser expandido com uma tabela de movimentações)
+        // Retorna uma lista vazia
         response.setContentType("application/json");
         response.getWriter().write("[]");
     }

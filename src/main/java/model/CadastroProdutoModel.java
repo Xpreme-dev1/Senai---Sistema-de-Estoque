@@ -13,6 +13,7 @@ public class CadastroProdutoModel {
     private String valor;
     private String total;
     private String status;
+    private String estoqueMinimo;
 
     public String getCodigoBarras() {
         return codigoBarras;
@@ -93,5 +94,13 @@ public class CadastroProdutoModel {
     public void setStatus(String status){
         this.status = status;
     }
+
+    public String getEstoqueMinimo() {
+        return estoqueMinimo;
+    }
+
+    public void setEstoqueMinimo(String estoqueMinimo) {
+        this.estoqueMinimo = estoqueMinimo;
+    } 
     
 }

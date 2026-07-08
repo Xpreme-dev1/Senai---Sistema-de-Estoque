@@ -10,10 +10,6 @@ import java.io.IOException;
 import java.util.List;
 import model.CadastroProdutoModel;
 
-/**
- * Controller para fornecer a lista de produtos para a tela de Gerenciamento.
- * Alteração: Criado para atender a chamada fetch('/api/produtos') do gerenciamento.js.
- */
 @WebServlet("/api/produtos")
 public class ProdutosController extends HttpServlet {
     

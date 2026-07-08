@@ -11,10 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import model.CadastroProdutoModel;
 
-/**
- * Controller para fornecer produtos que precisam de reposição.
- * Alteração: Criado para atender a chamada fetch('/api/produtos/reposicao') do gerenciamento.js.
- */
 @WebServlet("/api/produtos/reposicao")
 public class ReposicaoController extends HttpServlet {
     

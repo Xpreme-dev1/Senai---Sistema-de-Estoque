@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Importação dos estilos existentes para manter a identidade visual -->
     <link rel="stylesheet" href="../css/reset.css"/>
     <link rel="stylesheet" href="../css/color.css"/>
     <link rel="stylesheet" href="../css/dashboard.css"/>
-    <!-- Estilo específico para esta tela -->
     <link rel="stylesheet" href="../css/gerenciamento.css"/>
     <title>Gerenciamento de Estoque</title>
 </head>
@@ -24,20 +22,17 @@
     </header>
 
     <main>
-        <!-- 1. Formulário para registrar movimentação de estoque -->
         <section class="card-container">
             <div class="card">
                 <h2 class="titulo-secao">Registrar Movimentação</h2>
                 <form id="formMovimentacao" class="form-gerenciamento">
                     <div class="grid-form">
-                        <!-- Selecionar produto já cadastrado -->
                         <div class="grupo-input">
                             <label for="produtoSelect">Produto</label>
                             <select id="produtoSelect" required>
                                 <option value="">Selecione um produto</option>
                             </select>
                         </div>
-                        <!-- Escolher tipo: Entrada ou Saída -->
                         <div class="grupo-input">
                             <label for="tipoMov">Tipo</label>
                             <select id="tipoMov" required>
@@ -45,31 +40,25 @@
                                 <option value="Saída">Saída</option>
                             </select>
                         </div>
-                        <!-- Informar quantidade -->
                         <div class="grupo-input">
                             <label for="qtdMov">Quantidade</label>
                             <input type="number" id="qtdMov" min="1" required>
                         </div>
-                        <!-- Informar data -->
                         <div class="grupo-input">
                             <label for="dataMov">Data</label>
                             <input type="date" id="dataMov" required>
                         </div>
                     </div>
-                    <!-- Informar observação opcional -->
                     <div class="grupo-input">
                         <label for="obsMov">Observação (Opcional)</label>
                         <textarea id="obsMov" rows="2"></textarea>
                     </div>
-                    <!-- Botão para salvar movimentação -->
                     <button type="submit" class="btn-salvar">Salvar Movimentação</button>
-                    <!-- Exibição de erro: Quantidade insuficiente em estoque -->
                     <p id="msgErro" class="msg-erro" style="display: none;"></p>
                 </form>
             </div>
         </section>
 
-        <!-- 4. Tabela com os produtos e 5. Status Automático -->
         <section class="card-container">
             <div class="card">
                 <h2 class="titulo-secao">Status Atual do Estoque</h2>
@@ -77,22 +66,20 @@
                     <table id="tabelaProdutos">
                         <thead>
                             <tr>
-                                <th>Produto</th>
-                                <th>Qtd Atual</th>
-                                <th>Local/Prateleira</th>
-                                <th>Mínimo</th>
-                                <th>Status</th>
+                                <th>Produto / </th>
+                                <th>Qtd Atual / </th>
+                                <th>Local / </th>
+                                <th>Mínimo / </th>
+                                <th>Status / </th>
                             </tr>
                         </thead>
                         <tbody id="corpoTabelaProdutos">
-                            <!-- Preenchido via JavaScript -->
                         </tbody>
                     </table>
                 </div>
             </div>
         </section>
 
-        <!-- 6. Área de Reposição -->
         <section class="card-container">
             <div class="card">
                 <h2 class="titulo-secao">Produtos para Reposição</h2>
@@ -100,26 +87,20 @@
                     <table id="tabelaReposicao">
                         <thead>
                             <tr>
-                                <th>Produto</th>
-                                <th>Qtd Atual</th>
-                                <th>Mínimo</th>
-                                <th>Sugerido</th>
+                                <th>Produto / </th>
+                                <th>Qtd Atual / </th>
+                                <th>Mínimo / </th>
+                                <th>Sugerido / </th>
                                 <th>Local</th>
                             </tr>
                         </thead>
                         <tbody id="corpoTabelaReposicao">
-                            <!-- Preenchido via JavaScript -->
                         </tbody>
                     </table>
-                </div>
-                <div class="acoes-reposicao">
-                    <!-- Botão Gerar solicitação de compra -->
-                    <button id="btnSolicitarCompra" class="btn-compra">Gerar Solicitação de Compra</button>
                 </div>
             </div>
         </section>
 
-        <!-- 7. Histórico de movimentações -->
         <section class="card-container">
             <div class="card">
                 <h2 class="titulo-secao">Histórico de Movimentações</h2>
@@ -127,15 +108,14 @@
                     <table id="tabelaHistorico">
                         <thead>
                             <tr>
-                                <th>Data</th>
-                                <th>Produto</th>
-                                <th>Tipo</th>
-                                <th>Qtd</th>
+                                <th>Data / </th>
+                                <th>Produto / </th>
+                                <th>Tipo / </th>
+                                <th>Qtd / </th>
                                 <th>Observação</th>
                             </tr>
                         </thead>
                         <tbody id="corpoTabelaHistorico">
-                            <!-- Preenchido via JavaScript -->
                         </tbody>
                     </table>
                 </div>
@@ -143,7 +123,6 @@
         </section>
     </main>
 
-    <!-- Scripts de lógica e logout -->
     <script src="../js/gerenciamento.js"></script>
     <script src="../js/logout.js"></script>
 </body>

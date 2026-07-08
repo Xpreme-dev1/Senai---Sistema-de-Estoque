@@ -1,7 +1,3 @@
-/**
- * Lógica da tela de Gerenciamento de Estoque.
- * Realiza a integração com o backend Java via Fetch API.
- */
 document.addEventListener('DOMContentLoaded', () => {
     // Carregamento inicial dos dados
     carregarProdutos();
@@ -17,9 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCompra.addEventListener('click', gerarSolicitacaoCompra);
 });
 
-/**
- * Busca todos os produtos para preencher o select e a tabela de status.
- */
+ // Busca todos os produtos para preencher o select e a tabela de status.
+
 async function carregarProdutos() {
     try {
         const response = await fetch('/api/produtos');
@@ -58,9 +53,8 @@ async function carregarProdutos() {
     }
 }
 
-/**
- * Busca produtos que precisam de reposição.
- */
+ //Busca produtos que precisam de reposição.
+
 async function carregarReposicao() {
     try {
         const response = await fetch('/api/produtos/reposicao');
@@ -87,9 +81,8 @@ async function carregarReposicao() {
     }
 }
 
-/**
- * Busca o histórico de movimentações realizadas.
- */
+ //Busca o histórico de movimentações realizadas.
+
 async function carregarHistorico() {
     try {
         const response = await fetch('/api/movimentacoes');
@@ -114,9 +107,9 @@ async function carregarHistorico() {
     }
 }
 
-/**
- * Envia os dados da nova movimentação para o servidor.
- */
+
+  // Envia os dados da nova movimentação para o servidor.
+
 async function registrarMovimentacao(e) {
     e.preventDefault();
     
@@ -148,7 +141,7 @@ async function registrarMovimentacao(e) {
             carregarReposicao();
             carregarHistorico();
         } else {
-            // Regra 3: Mostrar erro "Quantidade insuficiente em estoque."
+            // Mostrar erro quantidade insuficiente em estoque."
             msgErro.textContent = result.message;
             msgErro.style.display = 'block';
         }
@@ -158,41 +151,6 @@ async function registrarMovimentacao(e) {
     }
 }
 
-/**
- * Gera um arquivo de texto com a solicitação de compra baseada na tabela de reposição.
- */
-function gerarSolicitacaoCompra() {
-    const linhas = document.querySelectorAll('#corpoTabelaReposicao tr');
-    if (linhas.length === 0) {
-        alert('Não há itens para reposição no momento.');
-        return;
-    }
-
-    let solicitacao = 'SOLICITAÇÃO DE COMPRA\n\n';
-    linhas.forEach(linha => {
-        const cols = linha.querySelectorAll('td');
-        solicitacao += `Produto: ${cols[0].textContent}\n`;
-        solicitacao += `Qtd Atual: ${cols[1].textContent}\n`;
-        solicitacao += `Estoque Mínimo: ${cols[2].textContent}\n`;
-        solicitacao += `Qtd Sugerida: ${cols[3].textContent}\n`;
-        solicitacao += `Local: ${cols[4].textContent}\n`;
-        solicitacao += '---------------------------\n';
-    });
-
-    // Gera o download do arquivo
-    const blob = new Blob([solicitacao], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'solicitacao_compra.txt';
-    a.click();
-    
-    alert('Solicitação de compra gerada com sucesso!');
-}
-
-/**
- * Formata data de YYYY-MM-DD para DD/MM/YYYY.
- */
 function formatarData(dataStr) {
     if (!dataStr) return '-';
     const partes = dataStr.split('-');
